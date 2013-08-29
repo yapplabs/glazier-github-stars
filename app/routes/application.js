@@ -106,7 +106,7 @@ var ApplicationRoute = Ember.Route.extend({
       controller.set('model.totalStargazers', stargazers.total || stargazers.data.length);
     });
   },
-  events: {
+  actions: {
     currentUserChanged: function(user) {
       this.controller.set('user', user);
     },
