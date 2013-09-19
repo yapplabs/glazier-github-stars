@@ -15,9 +15,9 @@ module("Github::Stars Acceptances", {
       conductorURL: '/vendor/conductor.js.html'
     });
 
-    Conductor.services['test'] = TestService;
+    conductor.services['test'] = TestService;
 
-    Conductor.services['unauthenticatedGithubApi'] = Conductor.Oasis.Service.extend({
+    conductor.services['unauthenticatedGithubApi'] = Conductor.Oasis.Service.extend({
       requests: {
         ajax: function(ajaxOpts) {
           return { meta: {}, data: [] };
@@ -30,8 +30,8 @@ module("Github::Stars Acceptances", {
       capabilities: ['test', 'authenticatedGithubApi', 'unauthenticatedGithubApi']
     });
 
-    card.promise.then(null, Conductor.error);
-    card.appendTo('#qunit-fixture');
+    var promise = card.appendTo('#qunit-fixture');
+    promise.then(null, Conductor.error);
   },
 
   teardown: function() {
